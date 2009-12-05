@@ -10,14 +10,14 @@ li .handle {
 
 
 
-<h1>Reorder Products</h1>
-<h3>Drag the products up and down to adjust the order in which they are displayed</h3><br>
+<h1><%= t('reorder') %></h1>
+<h3><%= t('reorder_desc') %></h3><br>
 	<ul id="item_list">
 
 	<% for product in @products %>
 	<% content_tag_for(:li, product, :style => "list-style: none;") do %>
 	    <%#= image_tag(product.catalog_image.url(:thumb), :class => 'handle') %>
-			<span class="handle">[drag]</span> <%= product.name %>
+			<span class="handle"><%= t('reorder_drag') %></span> <%= product.name %>
 			<br /><br />
 	  <% end %>
 	<% end %>

@@ -1,3 +1,4 @@
 en-US:
-  reorder: Re-Order Products
-  
+  reorder: "Re-Order Products"
+  reorder_desc: "Drag the products up and down to adjust the order in which they are displayed."
+  reorder_drag: "[drag]"  
