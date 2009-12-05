@@ -1,4 +1,4 @@
 hu:
   reorder: "Termékek rendezése"
   reorder_desc: "Mozgasd a termékeket a megfelelő pozícióba."
-  reorder_drag: "[húzz]"
+  reorder_drag: "húzz"
