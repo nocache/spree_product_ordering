@@ -1,12 +1,12 @@
+<% content_for :head do %>
+  <%= javascript_include_tag :defaults %>
+<% end %>
+
 <style>
 li .handle {
-  font-size: 12px;
   cursor: move;
   color: white;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
   background-color: black;
-  padding: 2px 6px;
   margin-right: 10px;
 }
 </style>
@@ -21,8 +21,8 @@ li .handle {
 
 	<% for product in @products %>
 	<% content_tag_for(:li, product, :style => "list-style: none;") do %>
-	    <%#= image_tag(product.catalog_image.url(:thumb), :class => 'handle') %>
-			<span class="handle"><%= t('reorder_drag') %></span> <%= product.name %>
+			<%= image_tag(product.images.first.attachment.url(:mini), :class => 'handle') %>
+			<%= product.name %>
 			<br /><br />
 	  <% end %>
 	<% end %>
