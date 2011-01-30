@@ -1,3 +1,3 @@
 class SpreeProductOrderingHooks < Spree::ThemeSupport::HookListener
-  # custom hooks go here
+  insert_after :admin_product_sub_tabs,   'admin/hooks/sub_menu_tab'
 end

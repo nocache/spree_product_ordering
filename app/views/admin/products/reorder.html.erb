@@ -13,15 +13,17 @@ li .handle {
 
 <%= render :partial => 'admin/shared/product_sub_menu' %>
 
-
-
 <h1><%= t('reorder') %></h1>
 <h3><%= t('reorder_desc') %></h3><br>
 	<ul id="item_list">
 
 	<% for product in @products %>
 	<% content_tag_for(:li, product, :style => "list-style: none;") do %>
-			<%= image_tag(product.images.first.attachment.url(:mini), :class => 'handle') %>
+      <% if product.images.any? %>
+			  <%= image_tag(product.images.first.attachment.url(:mini), :class => 'handle') %>
+      <% else %>
+			  <%= image_tag('noimage/mini.jpg', :class => 'handle') %>
+      <% end %>
 			<%= product.name %>
 			<br /><br />
 	  <% end %>
