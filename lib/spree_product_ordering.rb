@@ -7,36 +7,11 @@ module SpreeProductOrdering
     config.autoload_paths += %W(#{config.root}/lib)
 
     def self.activate
-   
-		Product.class_eval do
-			acts_as_list
-			default_scope :order => "position"
-			named_scope :ordered, :order => 'position'
-        end
-		
-	Admin::ProductsController.class_eval do
-          
-      def reorder
-        @products = Product.active.find(:all, :order => 'position')
+      Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
+        Rails.env.production? ? require(c) : load(c)
       end
-      
-      def order_products
-        
-        params[:item_list].each_with_index do |id, index|
-            Product.update_all(['position=?', index+1], ['id=?', id])
-        end
+    end
 
-          respond_to do |format|
-            format.js do 
-              render :update do |page|
-                page.visual_effect :highlight, "item_list"
-              end
-            end
-		  end  
-      end 
-    end
-    end
-    
     config.to_prepare &method(:activate).to_proc
   end
 end
