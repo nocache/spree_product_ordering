@@ -41,4 +41,4 @@ li.handle .image {
 	<% end %>	
 	</ul>
 
-<%= sortable_element("item_list", :url => { :action => :order_products, :id => product }, :handle => "handle", :axis => "'x,j'") %>
+<%= sortable_element("item_list", :url => { :action => :order_products, :id => product }, :handle => "handle", constraint: false, overlap:'horizontal', :axis => "'x,j'") %>
