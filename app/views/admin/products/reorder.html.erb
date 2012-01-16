@@ -3,11 +3,21 @@
 <% end %>
 
 <style>
-li .handle {
+li.handle {
   cursor: move;
-  color: white;
-  background-color: black;
-  margin-right: 10px;
+  border: 1px dashed #ccc;
+  list-style: none; 
+  float: left; 
+  display:inline;
+  width: 140px;
+  height: 140px;
+  margin: 0 20px 20px 0;
+  text-align: center;
+}
+li.handle .image {
+	padding-top: 10px;
+	display: block;
+  	height: 70px;
 }
 </style>
 
@@ -15,20 +25,20 @@ li .handle {
 
 <h1><%= t('reorder') %></h1>
 <h3><%= t('reorder_desc') %></h3><br>
-	<ul id="item_list">
 
+	<ul id="item_list" class="clearfix">
 	<% for product in @products %>
-	<% content_tag_for(:li, product, :style => "list-style: none;") do %>
-      <% if product.images.any? %>
-			  <%= image_tag(product.images.first.attachment.url(:mini), :class => 'handle') %>
-      <% else %>
-			  <%= image_tag('noimage/mini.jpg', :class => 'handle') %>
-      <% end %>
-			<%= product.name %>
-			<br /><br />
-	  <% end %>
-	<% end %>
-	
+		<% content_tag_for(:li, product, :class=> 'handle') do %>
+			<div class="image">
+				<% if product.images.any? %>
+					<%= image_tag(product.images.first.attachment.url(:mini)) %>
+				<% else %>
+					<%= image_tag('noimage/mini.jpg') %>
+				<% end %>
+			</div>
+			<p><%= product.name %></p>
+		<% end %>
+	<% end %>	
 	</ul>
 
-<%= sortable_element("item_list", :url => { :action => :order_products, :id => product }, :handle => "handle") %>
+<%= sortable_element("item_list", :url => { :action => :order_products, :id => product }, :handle => "handle", :axis => "'x,j'") %>
