@@ -1,0 +1,16 @@
+
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<h1>Reorder Products</h1>
+
+<h3>Drag the products up and down to adjust the order in which they are displayed</h3>
+
+<table class="index sortable" data-sortable-link="<%= update_positions_admin_products_url %>">
+	<% for product in @products %>
+  	<tr id="<%= spree_dom_id product %>">
+      <td>
+			   <span class="handle"></span> <%= product.name %>
+      </td>
+	  </tr>
+	<% end %>
+</table>
