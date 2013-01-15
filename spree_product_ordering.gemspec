@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_product_ordering'
-  s.version     = '1.1.2'
+  s.version     = '1.3'
   s.summary     = 'Product reordering extension for Spree 1.1.x'
   s.description = 'A simple extension that allows reordering products and variants.'
   s.required_ruby_version = '>= 1.9.3'
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 1.1.1'
+  s.add_dependency 'spree_core', '~> 1.3'
 
   s.add_development_dependency 'capybara', '1.0.1'
   s.add_development_dependency 'factory_girl', '~> 2.6.4'
